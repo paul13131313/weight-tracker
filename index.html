@@ -181,6 +181,16 @@
     var COLORS=[{line:'#c0392b',bg:'rgba(192,57,43,0.08)'},{line:'#d4740a',bg:'rgba(212,116,10,0.08)'},{line:'#2d8f4e',bg:'rgba(45,143,78,0.08)'},{line:'#8e5435',bg:'rgba(142,84,53,0.08)'},{line:'#b5651d',bg:'rgba(181,101,29,0.08)'},{line:'#7a3b2e',bg:'rgba(122,59,46,0.08)'}];
     var chart=null,currentData=null,editingMember=null;
 
+    // ★ CORS対応: GASにPOSTする共通関数
+    // Content-Type を text/plain にすることでプリフライト(OPTIONS)を回避
+    function postToGAS(data) {
+      return fetch(GAS_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(data)
+      }).then(function(r) { return r.json(); });
+    }
+
     function loadData(){
       document.getElementById('loading').style.display='block';
       document.getElementById('error').style.display='none';
@@ -249,7 +259,7 @@
       el.innerHTML=ic?'<img src="'+ic+'" style="width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid var(--accent)" onerror="this.parentElement.innerHTML=\''+n.charAt(0)+'\'">':n.charAt(0);
     }
 
-    // ===== 画像アップロード =====
+    // ===== 画像アップロード（CORS対応済み） =====
     function handleFileSelect(input){
       var file=input.files[0];
       if(!file)return;
@@ -269,23 +279,19 @@
 
       var reader=new FileReader();
       reader.onload=function(e){
-        var base64Full=e.target.result; // data:image/png;base64,xxxxx
+        var base64Full=e.target.result;
         var parts=base64Full.split(',');
         var mimeMatch=parts[0].match(/data:(.*?);/);
         var mimeType=mimeMatch?mimeMatch[1]:'image/png';
         var base64Data=parts[1];
 
-        fetch(GAS_API_URL,{
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body:JSON.stringify({
-            action:'uploadIcon',
-            base64Data:base64Data,
-            mimeType:mimeType,
-            fileName:file.name||'icon.png'
-          })
+        // ★ CORS対応: postToGAS を使用（text/plain で送信）
+        postToGAS({
+          action:'uploadIcon',
+          base64Data:base64Data,
+          mimeType:mimeType,
+          fileName:file.name||'icon.png'
         })
-        .then(function(r){return r.json();})
         .then(function(result){
           if(result.url){
             document.getElementById('editIcon').value=result.url;
@@ -293,7 +299,7 @@
             st.className='upload-status done';
             updatePreview();
           } else {
-            st.textContent='❌ '+( result.error||'アップロード失敗');
+            st.textContent='❌ '+(result.error||'アップロード失敗');
             st.className='upload-status error';
           }
           document.getElementById('saveBtn').disabled=false;
@@ -307,7 +313,7 @@
       reader.readAsDataURL(file);
     }
 
-    // ===== 保存 =====
+    // ===== 保存（CORS対応済み） =====
     function saveSetting(){
       if(!editingMember)return;
       var dn=document.getElementById('editName').value.trim();
@@ -316,17 +322,13 @@
       document.getElementById('saveBtn').disabled=true;
       document.getElementById('savingText').style.display='block';
 
-      fetch(GAS_API_URL,{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({
-          action:'saveMemberSetting',
-          originalName:editingMember.originalMember,
-          displayName:dn,
-          iconUrl:iu
-        })
+      // ★ CORS対応: postToGAS を使用（text/plain で送信）
+      postToGAS({
+        action:'saveMemberSetting',
+        originalName:editingMember.originalMember,
+        displayName:dn,
+        iconUrl:iu
       })
-      .then(function(r){return r.json();})
       .then(function(){closeModal();loadData();})
       .catch(function(e){alert('保存失敗: '+e);document.getElementById('saveBtn').disabled=false;document.getElementById('savingText').style.display='none';});
     }
