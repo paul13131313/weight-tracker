@@ -21,208 +21,70 @@
     }
     * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     html, body { width: 100%; overflow-x: hidden; }
-    body {
-      font-family: 'Noto Sans JP', 'DM Sans', sans-serif;
-      background: var(--mustard);
-      color: var(--text-dark);
-    }
-
-    .header {
-      padding: 16px 0 4px;
-      text-align: center;
-    }
-    .header h1 {
-      font-family: 'Noto Serif JP', serif;
-      font-weight: 900;
-      font-size: 30vw;
-      letter-spacing: 0.06em;
-      line-height: 1.0;
-      color: var(--accent);
-      transform: scaleY(0.78);
-      transform-origin: center;
-    }
-    .header .sub {
-      font-size: 3.5vw;
-      color: rgba(90, 50, 10, 0.5);
-      letter-spacing: 0.15em;
-      font-weight: 400;
-    }
-
+    body { font-family: 'Noto Sans JP', 'DM Sans', sans-serif; background: var(--mustard); color: var(--text-dark); }
+    .header { padding: 16px 0 4px; text-align: center; }
+    .header h1 { font-family: 'Noto Serif JP', serif; font-weight: 900; font-size: 30vw; letter-spacing: 0.06em; line-height: 1.0; color: var(--accent); transform: scaleY(0.78); transform-origin: center; }
+    .header .sub { font-size: 3.5vw; color: rgba(90, 50, 10, 0.5); letter-spacing: 0.15em; font-weight: 400; }
     .main { padding: 8px 4px 16px; }
-
-    .section-label {
-      font-size: 3vw;
-      font-weight: 700;
-      color: var(--text-light);
-      letter-spacing: 0.1em;
-      margin-bottom: 5px;
-      padding-left: 4px;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: 10px;
-      padding: 8px 4px;
-      margin-bottom: 8px;
-      border: 1px solid var(--card-border);
-      box-shadow: 0 2px 8px rgba(80,40,0,0.06);
-    }
-
-    /* 4列コンパクト */
-    .member-list {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 4px;
-    }
-    .member-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
-      padding: 6px 2px;
-      background: #fdf6eb;
-      border-radius: 10px;
-      border: 1px solid rgba(120,80,20,0.05);
-      text-align: center;
-    }
-    .member-icon {
-      width: 10vw; height: 10vw;
-      max-width: 44px; max-height: 44px;
-      border-radius: 50%; object-fit: cover;
-      border: 2px solid var(--accent);
-      flex-shrink: 0;
-    }
-    .member-icon-placeholder {
-      width: 10vw; height: 10vw;
-      max-width: 44px; max-height: 44px;
-      border-radius: 50%;
-      background: var(--accent);
-      display: flex; align-items: center; justify-content: center;
-      color: white; font-weight: 800; font-size: 4vw;
-      flex-shrink: 0;
-    }
-    .member-info {
-      min-width: 0; width: 100%;
-      text-align: center;
-    }
-    .member-name-row {
-      display: flex; align-items: center; justify-content: center; gap: 1px;
-    }
-    .member-name {
-      font-weight: 600; font-size: 3vw;
-      color: var(--text-dark);
-      white-space: nowrap;
-      overflow: hidden; text-overflow: ellipsis;
-    }
-    .edit-btn {
-      background: none; border: none; cursor: pointer;
-      font-size: 2.8vw; color: var(--text-light);
-      padding: 1px; line-height: 1;
-      min-width: 20px; min-height: 20px;
-      display: flex; align-items: center; justify-content: center;
-    }
+    .section-label { font-size: 3vw; font-weight: 700; color: var(--text-light); letter-spacing: 0.1em; margin-bottom: 5px; padding-left: 4px; }
+    .card { background: var(--card-bg); border-radius: 10px; padding: 8px 4px; margin-bottom: 8px; border: 1px solid var(--card-border); box-shadow: 0 2px 8px rgba(80,40,0,0.06); }
+    .member-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+    .member-card { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 6px 2px; background: #fdf6eb; border-radius: 10px; border: 1px solid rgba(120,80,20,0.05); text-align: center; }
+    .member-icon { width: 10vw; height: 10vw; max-width: 44px; max-height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); flex-shrink: 0; }
+    .member-icon-placeholder { width: 10vw; height: 10vw; max-width: 44px; max-height: 44px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 4vw; flex-shrink: 0; }
+    .member-info { min-width: 0; width: 100%; text-align: center; }
+    .member-name-row { display: flex; align-items: center; justify-content: center; gap: 1px; }
+    .member-name { font-weight: 600; font-size: 3vw; color: var(--text-dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .edit-btn { background: none; border: none; cursor: pointer; font-size: 2.8vw; color: var(--text-light); padding: 1px; line-height: 1; min-width: 20px; min-height: 20px; display: flex; align-items: center; justify-content: center; }
     .edit-btn:active { background: rgba(0,0,0,0.05); border-radius: 4px; }
-
-    .member-weight-area {
-      display: flex; align-items: baseline; justify-content: center; gap: 1px;
-    }
-    .member-latest {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 5vw; font-weight: 800;
-      color: var(--text-dark); line-height: 1.2;
-    }
-    .member-latest-unit {
-      font-size: 2.5vw; color: var(--text-light); font-weight: 500;
-    }
-    .member-change {
-      font-size: 2.5vw; font-weight: 700;
-    }
+    .member-weight-area { display: flex; align-items: baseline; justify-content: center; gap: 1px; }
+    .member-latest { font-family: 'DM Sans', sans-serif; font-size: 5vw; font-weight: 800; color: var(--text-dark); line-height: 1.2; }
+    .member-latest-unit { font-size: 2.5vw; color: var(--text-light); font-weight: 500; }
+    .member-change { font-size: 2.5vw; font-weight: 700; }
     .change-down { color: var(--success); }
     .change-down::before { content: '▼'; font-size: 1.8vw; margin-right: 1px; }
     .change-up { color: var(--danger); }
     .change-up::before { content: '▲'; font-size: 1.8vw; margin-right: 1px; }
     .change-same { color: var(--text-light); }
-
-    .chart-container {
-      position: relative;
-      width: 100%;
-      height: 120vw;
-      min-height: 440px;
-    }
-
-    .refresh-btn {
-      display: block; width: 100%;
-      margin: 6px 0 0; padding: 12px;
-      background: var(--card-bg); color: var(--text-dark);
-      border: 1px solid var(--card-border);
-      border-radius: 10px; font-size: 3.8vw;
-      font-weight: 700; cursor: pointer;
-      font-family: inherit;
-      box-shadow: 0 2px 6px rgba(80,40,0,0.05);
-    }
+    .chart-container { position: relative; width: 100%; height: 120vw; min-height: 440px; }
+    .refresh-btn { display: block; width: 100%; margin: 6px 0 0; padding: 12px; background: var(--card-bg); color: var(--text-dark); border: 1px solid var(--card-border); border-radius: 10px; font-size: 3.8vw; font-weight: 700; cursor: pointer; font-family: inherit; box-shadow: 0 2px 6px rgba(80,40,0,0.05); }
     .refresh-btn:active { background: #fdf6eb; transform: scale(0.98); }
-
-    .last-updated {
-      text-align: center; font-size: 2.8vw;
-      color: var(--text-light); margin-top: 6px;
-    }
-
+    .last-updated { text-align: center; font-size: 2.8vw; color: var(--text-light); margin-top: 6px; }
     .loading { text-align: center; padding: 40px 12px; color: var(--text-light); }
-    .loading-spinner {
-      width: 24px; height: 24px;
-      border: 3px solid #eee; border-top-color: var(--accent);
-      border-radius: 50%; animation: spin 0.7s linear infinite;
-      margin: 0 auto 10px;
-    }
+    .loading-spinner { width: 24px; height: 24px; border: 3px solid #eee; border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; margin: 0 auto 10px; }
     .loading p { font-size: 3.8vw; }
     @keyframes spin { to { transform: rotate(360deg); } }
     .error { text-align: center; padding: 24px 12px; color: var(--danger); font-size: 3.8vw; }
 
     /* モーダル */
-    .modal-overlay {
-      display: none; position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.45); z-index: 1000;
-      align-items: flex-end; justify-content: center;
-    }
+    .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.45); z-index: 1000; align-items: flex-end; justify-content: center; }
     .modal-overlay.active { display: flex; }
-    .modal {
-      background: var(--card-bg);
-      border-radius: 16px 16px 0 0;
-      padding: 16px 12px 28px; width: 100%;
-      animation: slideUp 0.22s ease-out;
-    }
+    .modal { background: var(--card-bg); border-radius: 16px 16px 0 0; padding: 16px 12px 28px; width: 100%; animation: slideUp 0.22s ease-out; }
     @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
     .modal-handle { width: 32px; height: 4px; background: #ddd; border-radius: 2px; margin: 0 auto 14px; }
     .modal h3 { font-size: 4.5vw; margin-bottom: 14px; font-weight: 700; }
     .modal label { display: block; font-size: 3.2vw; color: var(--text-light); margin-bottom: 4px; margin-top: 12px; font-weight: 600; }
-    .modal input {
-      width: 100%; padding: 10px 12px;
-      border: 1.5px solid rgba(120,80,20,0.12);
-      border-radius: 10px; font-size: 16px;
-      outline: none; background: #fdf6eb;
-      color: var(--text-dark); font-family: inherit;
-      -webkit-appearance: none;
-    }
-    .modal input:focus { border-color: var(--accent); background: #fffdf7; }
-    .modal-preview {
-      display: flex; align-items: center; gap: 8px;
-      margin-top: 12px; padding: 10px;
-      background: #fdf6eb; border-radius: 8px;
-    }
+    .modal input[type="text"] { width: 100%; padding: 10px 12px; border: 1.5px solid rgba(120,80,20,0.12); border-radius: 10px; font-size: 16px; outline: none; background: #fdf6eb; color: var(--text-dark); font-family: inherit; -webkit-appearance: none; }
+    .modal input[type="text"]:focus { border-color: var(--accent); background: #fffdf7; }
+
+    /* アップロードボタン */
+    .upload-area { margin-top: 12px; }
+    .upload-row { display: flex; gap: 8px; align-items: center; }
+    .upload-btn { display: inline-flex; align-items: center; gap: 4px; padding: 8px 14px; background: #fdf6eb; border: 1.5px dashed rgba(120,80,20,0.2); border-radius: 10px; font-size: 3.5vw; color: var(--text-mid); cursor: pointer; font-family: inherit; font-weight: 600; transition: background 0.15s; }
+    .upload-btn:active { background: #f5ece0; }
+    .upload-btn input[type="file"] { display: none; }
+    .upload-status { font-size: 3vw; color: var(--text-light); }
+    .upload-status.uploading { color: var(--accent); }
+    .upload-status.done { color: var(--success); }
+    .upload-status.error { color: var(--danger); }
+    .or-divider { font-size: 3vw; color: var(--text-light); margin-top: 8px; text-align: center; }
+
+    .modal-preview { display: flex; align-items: center; gap: 8px; margin-top: 12px; padding: 10px; background: #fdf6eb; border-radius: 8px; }
     .modal-preview img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
-    .modal-preview .preview-placeholder {
-      width: 34px; height: 34px; border-radius: 50%;
-      background: #e0e0e0; display: flex; align-items: center;
-      justify-content: center; color: var(--text-light); font-size: 14px; font-weight: 700;
-    }
+    .modal-preview .preview-placeholder { width: 34px; height: 34px; border-radius: 50%; background: #e0e0e0; display: flex; align-items: center; justify-content: center; color: var(--text-light); font-size: 14px; font-weight: 700; }
     .modal-preview .preview-name { font-weight: 700; font-size: 3.8vw; }
     .modal-buttons { display: flex; gap: 8px; margin-top: 16px; }
-    .modal-buttons button {
-      flex: 1; padding: 12px; border-radius: 10px;
-      font-size: 4vw; font-weight: 700; cursor: pointer;
-      border: none; font-family: inherit; min-height: 44px;
-    }
+    .modal-buttons button { flex: 1; padding: 12px; border-radius: 10px; font-size: 4vw; font-weight: 700; cursor: pointer; border: none; font-family: inherit; min-height: 44px; }
     .btn-cancel { background: #f5ece0; color: var(--text-mid); }
     .btn-save { background: var(--accent); color: white; }
     .btn-save:disabled { opacity: 0.4; }
@@ -247,6 +109,9 @@
       .edit-btn { font-size: 14px; }
       .modal { max-width: 420px; border-radius: 16px; margin-bottom: 20px; padding: 20px 20px 28px; }
       .modal-overlay { align-items: center; }
+      .upload-btn { font-size: 14px; }
+      .upload-status { font-size: 12px; }
+      .or-divider { font-size: 12px; }
     }
   </style>
 </head>
@@ -273,14 +138,30 @@
     <div class="last-updated" id="last-updated"></div>
   </div>
 
+  <!-- メンバー設定モーダル -->
   <div class="modal-overlay" id="editModal">
     <div class="modal">
       <div class="modal-handle"></div>
       <h3>メンバー設定</h3>
+
       <label>表示名</label>
       <input type="text" id="editName" placeholder="表示する名前" oninput="updatePreview()">
-      <label>アイコンURL（任意）</label>
+
+      <div class="upload-area">
+        <label>アイコン画像</label>
+        <div class="upload-row">
+          <label class="upload-btn">
+            📷 画像を選択
+            <input type="file" id="iconFile" accept="image/*" onchange="handleFileSelect(this)">
+          </label>
+          <span class="upload-status" id="uploadStatus"></span>
+        </div>
+        <div class="or-divider">または URL を直接入力</div>
+      </div>
+
+      <label>アイコンURL</label>
       <input type="text" id="editIcon" placeholder="https://..." oninput="updatePreview()">
+
       <div class="modal-preview" id="editPreview">
         <div class="preview-placeholder" id="previewIcon">?</div>
         <span class="preview-name" id="previewName">プレビュー</span>
@@ -294,7 +175,7 @@
   </div>
 
   <script>
-    // ★ GASウェブアプリURL（デプロイ後に新しいURLに書き換え）
+    // ★ GASウェブアプリURL
     var GAS_API_URL = 'https://script.google.com/macros/s/AKfycbz71_j4dMTTNRUWptZIGnHnqPuKFrT2OpF1ZPxllEfnRbrvitdeOMKF3XwU_kNd_ywo/exec';
 
     var COLORS=[{line:'#c0392b',bg:'rgba(192,57,43,0.08)'},{line:'#d4740a',bg:'rgba(212,116,10,0.08)'},{line:'#2d8f4e',bg:'rgba(45,143,78,0.08)'},{line:'#8e5435',bg:'rgba(142,84,53,0.08)'},{line:'#b5651d',bg:'rgba(181,101,29,0.08)'},{line:'#7a3b2e',bg:'rgba(122,59,46,0.08)'}];
@@ -345,9 +226,88 @@
       chart=new Chart(document.getElementById('weightChart').getContext('2d'),{type:'line',data:{labels:lb,datasets:ds},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{usePointStyle:true,padding:10,font:{size:12,family:"'Noto Sans JP'"},color:'#8a7060'}},tooltip:{backgroundColor:'#fff',titleColor:'#333',bodyColor:'#333',titleFont:{size:12},bodyFont:{size:14,weight:700},padding:10,cornerRadius:8,borderColor:'rgba(0,0,0,0.1)',borderWidth:1,callbacks:{label:function(ctx){return ' '+ctx.dataset.label+': '+ctx.parsed.y+'kg';}}}},scales:{x:{grid:{display:false},ticks:{font:{size:11},color:'#b09070'}},y:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{font:{size:11},color:'#b09070',callback:function(v){return v+'kg';}}}},interaction:{intersect:false,mode:'index'}}});
       document.getElementById('chart-container').style.display='block';
     }
-    function openEditModal(o,n,ic){editingMember={originalMember:o,currentName:n,currentIcon:ic};document.getElementById('editName').value=n;document.getElementById('editIcon').value=ic;document.getElementById('savingText').style.display='none';document.getElementById('saveBtn').disabled=false;updatePreview();document.getElementById('editModal').classList.add('active');}
+
+    // ===== モーダル =====
+    function openEditModal(o,n,ic){
+      editingMember={originalMember:o,currentName:n,currentIcon:ic};
+      document.getElementById('editName').value=n;
+      document.getElementById('editIcon').value=ic;
+      document.getElementById('iconFile').value='';
+      document.getElementById('uploadStatus').textContent='';
+      document.getElementById('uploadStatus').className='upload-status';
+      document.getElementById('savingText').style.display='none';
+      document.getElementById('saveBtn').disabled=false;
+      updatePreview();
+      document.getElementById('editModal').classList.add('active');
+    }
     function closeModal(){document.getElementById('editModal').classList.remove('active');editingMember=null;}
-    function updatePreview(){var n=document.getElementById('editName').value||'?',ic=document.getElementById('editIcon').value;document.getElementById('previewName').textContent=n;var el=document.getElementById('previewIcon');el.innerHTML=ic?'<img src="'+ic+'" style="width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid var(--accent)" onerror="this.parentElement.innerHTML=\''+n.charAt(0)+'\'">':n.charAt(0);}
+    function updatePreview(){
+      var n=document.getElementById('editName').value||'?';
+      var ic=document.getElementById('editIcon').value;
+      document.getElementById('previewName').textContent=n;
+      var el=document.getElementById('previewIcon');
+      el.innerHTML=ic?'<img src="'+ic+'" style="width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid var(--accent)" onerror="this.parentElement.innerHTML=\''+n.charAt(0)+'\'">':n.charAt(0);
+    }
+
+    // ===== 画像アップロード =====
+    function handleFileSelect(input){
+      var file=input.files[0];
+      if(!file)return;
+
+      // サイズチェック（2MB制限）
+      if(file.size>2*1024*1024){
+        var st=document.getElementById('uploadStatus');
+        st.textContent='2MB以下の画像を選んでください';
+        st.className='upload-status error';
+        return;
+      }
+
+      var st=document.getElementById('uploadStatus');
+      st.textContent='アップロード中...';
+      st.className='upload-status uploading';
+      document.getElementById('saveBtn').disabled=true;
+
+      var reader=new FileReader();
+      reader.onload=function(e){
+        var base64Full=e.target.result; // data:image/png;base64,xxxxx
+        var parts=base64Full.split(',');
+        var mimeMatch=parts[0].match(/data:(.*?);/);
+        var mimeType=mimeMatch?mimeMatch[1]:'image/png';
+        var base64Data=parts[1];
+
+        fetch(GAS_API_URL,{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({
+            action:'uploadIcon',
+            base64Data:base64Data,
+            mimeType:mimeType,
+            fileName:file.name||'icon.png'
+          })
+        })
+        .then(function(r){return r.json();})
+        .then(function(result){
+          if(result.url){
+            document.getElementById('editIcon').value=result.url;
+            st.textContent='✅ アップロード完了';
+            st.className='upload-status done';
+            updatePreview();
+          } else {
+            st.textContent='❌ '+( result.error||'アップロード失敗');
+            st.className='upload-status error';
+          }
+          document.getElementById('saveBtn').disabled=false;
+        })
+        .catch(function(err){
+          st.textContent='❌ アップロード失敗';
+          st.className='upload-status error';
+          document.getElementById('saveBtn').disabled=false;
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // ===== 保存 =====
     function saveSetting(){
       if(!editingMember)return;
       var dn=document.getElementById('editName').value.trim();
@@ -355,16 +315,22 @@
       if(!dn){alert('表示名を入力してください');return;}
       document.getElementById('saveBtn').disabled=true;
       document.getElementById('savingText').style.display='block';
-      var params=new URLSearchParams();
-      params.append('action','saveMemberSetting');
-      params.append('originalName',editingMember.originalMember);
-      params.append('displayName',dn);
-      params.append('iconUrl',iu);
-      fetch(GAS_API_URL+'?'+params.toString())
-        .then(function(r){return r.json();})
-        .then(function(){closeModal();loadData();})
-        .catch(function(e){alert('保存失敗: '+e);document.getElementById('saveBtn').disabled=false;document.getElementById('savingText').style.display='none';});
+
+      fetch(GAS_API_URL,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          action:'saveMemberSetting',
+          originalName:editingMember.originalMember,
+          displayName:dn,
+          iconUrl:iu
+        })
+      })
+      .then(function(r){return r.json();})
+      .then(function(){closeModal();loadData();})
+      .catch(function(e){alert('保存失敗: '+e);document.getElementById('saveBtn').disabled=false;document.getElementById('savingText').style.display='none';});
     }
+
     document.getElementById('editModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
     loadData();
   </script>
